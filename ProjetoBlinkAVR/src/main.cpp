@@ -1,18 +1,21 @@
+// Código profissional para o blink
+
 #include <Arduino.h>
 
 #define TIME_LED 250
+#define PINS_RX_TX (1<<1)
+#define PIN_LED (1<<7) // Led externo no pino digital 7 (D7)
 
-// Código profissional p/ o blink
 void setup() {
   //Direction registers
-  DDRD = 0xFA; // 1111 1110 => 1 = output & 0 = input / D0 = 0 & D1 = 1 / D2-D7 = 1
+  DDRD = PINS_RX_TX | PIN_LED;
 
   // Port "state" registers
-  PORTD = 0x00; // 0000 0000 => 1 = high & 0 = low / D0-D7 = 0
+  PORTD = 0x00; 
   delay(TIME_LED);
 }
 
 void loop() {
-  PORTD ^= 0x80; // PORTD xor 1000 0000
+  PORTD ^= PIN_LED;
   delay(TIME_LED);
 }
