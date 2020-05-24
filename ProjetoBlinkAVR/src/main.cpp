@@ -2,21 +2,17 @@
 
 #include <Arduino.h>
 
-#define TIME_LED 250
-#define PINS_RX_TX (1<<1)
-#define PIN_LED (1<<7) // Led externo no pino digital 7 (D7)
+#define TIME_LED 1000
+#define PIN_LED (1 << PB5) // Led interno do pino digital 13
 
 int main(void)
 {
-  //Direction registers
-  DDRD = PINS_RX_TX | PIN_LED;
+  DDRB |= PIN_LED;   //Direction registers
+  PORTB &= ~PIN_LED; // Port "state" registers
 
-  // Port "state" registers
-  PORTD = 0x00; 
-  _delay_ms(TIME_LED);
   while (1)
   {
-    PORTD ^= PIN_LED;
-   _delay_ms(TIME_LED);
+    PORTB ^= PIN_LED;
+    _delay_ms(TIME_LED);
   }
 }
