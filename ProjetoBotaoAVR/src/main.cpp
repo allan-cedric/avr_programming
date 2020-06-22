@@ -10,7 +10,7 @@
 #define PIN_LED (1 << PB5)    // Bit do pino digital 13 //
 
 #define set_bit(reg, b) (reg |= b)    // Seta o bit 1 em uma posição do registrador //
-#define reset_bit(reg, b) (reg &= ~b) // Seta o bit 0 em uma posição do registradior //
+#define reset_bit(reg, b) (reg &= ~b) // Seta o bit 0 em uma posição do registrador //
 
 #define DEBOUNCE_BUTTON 10 // Tempo(ms) de debounce para o botão //
 
